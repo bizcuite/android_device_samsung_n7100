@@ -22,6 +22,8 @@
 # Bionic
 MALLOC_IMPL := dlmalloc
 
+#cannot compile libump
+BOARD_PROVIDES_LIBUMP := true
 
 # RIL
 BOARD_PROVIDES_LIBRIL := true
