@@ -1,4 +1,1 @@
 allow vold efs_file:dir { read getattr open ioctl };
-#TEST allow to write on internal sdcard
-allow vold mmc_block_device:blk_file { open read write ioctl getattr };
-
