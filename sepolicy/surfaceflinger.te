@@ -1,1 +1,3 @@
 allow surfaceflinger ump_device:chr_file { open read write ioctl };
+#============= surfaceflinger ==============
+allow surfaceflinger kernel:system module_request;

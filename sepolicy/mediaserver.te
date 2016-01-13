@@ -1,3 +1,8 @@
 allow mediaserver camera_data_file:file write;
 allow mediaserver mfc_device:chr_file { read write ioctl open };
 allow mediaserver ump_device:chr_file { read write ioctl open };
+#============= mediaserver ==============
+allow mediaserver firmware_exynos:file { read open };
+allow mediaserver mnt_user_file:dir search;
+allow mediaserver storage_file:dir search;
+allow mediaserver storage_file:lnk_file read;

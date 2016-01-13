@@ -1,0 +1,4 @@
+#============= tzdatacheck ==============
+allow tzdatacheck kernel:system module_request;
+
+

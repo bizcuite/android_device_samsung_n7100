@@ -26,7 +26,6 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 # currently contain all of the bitmaps at xhdpi density so
 # we do this little trick to fall back to the hdpi version
 # if the xhdpi doesn't exist.
-PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 # Init files
@@ -34,13 +33,18 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/fstab.smdk4x12:root/fstab.smdk4x12 \
     $(LOCAL_PATH)/rootdir/init.target.rc:root/init.target.rc
 
+#bt files test
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/blueooth/iot_devlist.conf:system/etc/iot_devlist.conf \
+#    $(LOCAL_PATH)/blueooth/bt_stack.conf:system/etc/bt_stack.conf
+
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/tiny_hw.xml:system/etc/sound/t03g
 
-# Camera
+# Sensors
 PRODUCT_PACKAGES += \
-    camera.smdk4x12
+    sensors.smdk4x12
 
 # Gps
 PRODUCT_COPY_FILES += \
@@ -48,19 +52,29 @@ PRODUCT_COPY_FILES += \
 
 # Product specific Packages
 PRODUCT_PACKAGES += \
-    SamsungServiceMode
+	libdmitry \
+    libsecril-client \
+    libsecril-client-sap \
+    SamsungServiceMode \
+    tinyplay
 
-# Sensors
+# RIL
 PRODUCT_PACKAGES += \
-    sensors.smdk4x12
+	libsamsung_symbols \
+	ril-wrapper
 
 # NFC
 PRODUCT_PACKAGES += \
-    nfc.exynos4 \
+	nfc.exynos4 \
     libnfc \
     libnfc_jni \
     Nfc \
     Tag
+
+# Camera
+PRODUCT_PACKAGES += \
+    camera.smdk4x12 \
+    Camera2
 
 PRODUCT_COPY_FILES += \
     packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt \
@@ -93,6 +107,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
+
+
 
 
 $(call inherit-product-if-exists, vendor/samsung/n7100/n7100-vendor.mk)
