@@ -13,5 +13,3 @@ MicroSD | Up to 64 GB
 Battery | Li-Ion 3100mAh battery
 Display | 720 x 1280 pixels, 5.5 inches (~267 ppi pixel density)
 Camera  | 8 MP, 3264 x 2448 pixels, autofocus, LED flash
-
-Copyright 2015 - The Haxynox Project.
