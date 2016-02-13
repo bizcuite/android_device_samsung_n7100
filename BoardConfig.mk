@@ -56,13 +56,6 @@ TARGET_OTA_ASSERT_DEVICE := t03g,n7100,GT-N7100
 BOARD_SEPOLICY_DIRS +=\
     device/samsung/n7100/sepolicy
 
-# Enable dex-preoptimization to speed up the first boot sequence
-# of an SDK AVD. Note that this operation only works on Linux for now
-ifeq ($(HOST_OS),linux)
-  ifeq ($(WITH_DEXPREOPT),)
-    WITH_DEXPREOPT := true
-  endif
-endif
 
 # Build and enable the OpenGL ES View renderer. When running on the emulator,
 # the GLES renderer disables itself if host GL acceleration isn't available.
