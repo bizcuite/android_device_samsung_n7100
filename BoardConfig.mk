@@ -64,3 +64,6 @@ USE_OPENGL_RENDERER := true
 # Enable V4L2 & ION
 BOARD_USE_V4L2 := true
 BOARD_USE_V4L2_ION := true
+BOARD_USES_HGL := true
+BOARD_NO_32BPP := true
+#end of test
