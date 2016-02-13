@@ -56,7 +56,11 @@ TARGET_OTA_ASSERT_DEVICE := t03g,n7100,GT-N7100
 BOARD_SEPOLICY_DIRS +=\
     device/samsung/n7100/sepolicy
 
-
 # Build and enable the OpenGL ES View renderer. When running on the emulator,
 # the GLES renderer disables itself if host GL acceleration isn't available.
 USE_OPENGL_RENDERER := true
+
+#I try this
+# Enable V4L2 & ION
+BOARD_USE_V4L2 := true
+BOARD_USE_V4L2_ION := true
