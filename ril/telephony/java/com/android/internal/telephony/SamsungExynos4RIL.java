@@ -121,7 +121,7 @@ public class SamsungExynos4RIL extends RIL implements CommandsInterface {
 
     public SamsungExynos4RIL(Context context, int networkMode, int cdmaSubscription, Integer instanceId) {
         super(context, networkMode, cdmaSubscription, instanceId);
-        mQANElements = 5;
+        mQANElements = 4;
     }
 
     static String

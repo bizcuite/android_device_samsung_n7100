@@ -14,5 +14,5 @@
 # limitations under the License.
 #
 
-add_lunch_combo cm_n7100-eng
-add_lunch_combo cm_n7100-userdebug
+add_lunch_combo aosp_n7100-eng
+add_lunch_combo aosp_n7100-userdebug

@@ -1,4 +1,4 @@
 #============= sysinit ==============
-allow sysinit kernel:system module_request;
+#allow sysinit kernel:system module_request;
 
 

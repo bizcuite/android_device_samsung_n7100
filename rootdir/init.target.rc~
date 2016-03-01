@@ -5,11 +5,11 @@ on init
     mkdir /dev/pipes 0771 shell shell
 
 # GPS
-service gpsd /system/bin/gpsd -c /system/etc/gps.xml
-    class main
-    user gps
-    group system inet net_raw
-    ioprio be 0
+#service gpsd /system/bin/gpsd -c /system/etc/gps.xml
+#    class main
+#    user gps
+#    group system inet net_raw
+#    ioprio be 0
 
 on post-fs-data
     chown radio system /sys/devices/platform/samsung-pd.5/s3c-fimc.2/range_mode
@@ -32,9 +32,6 @@ on post-fs-data
     chown system radio /sys/class/sensors/ssp_sensor/ori_poll_delay
     chown system radio /sys/class/sensors/ssp_sensor/mag_poll_delay
 
-    write /data/.cid.info 0
-    restorecon /data/.cid.info
-    restorecon /data/ISP_CV
 
 #on fs
     # zram
