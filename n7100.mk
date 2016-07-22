@@ -38,7 +38,7 @@ PRODUCT_COPY_FILES += \
 #    $(LOCAL_PATH)/blueooth/iot_devlist.conf:system/etc/iot_devlist.conf \
 #    $(LOCAL_PATH)/blueooth/bt_stack.conf:system/etc/bt_stack.conf
 
-+# Barometer
+# Barometer
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.barometer.xml:system/etc/permissions/android.hardware.sensor.barometer.xml
 
