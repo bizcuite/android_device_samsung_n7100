@@ -324,6 +324,9 @@
     <!-- Boolean indicating if current platform supports BLE peripheral mode -->
     <bool name="config_bluetooth_le_peripheral_mode_supported">true</bool> 
     
-    <bool name="config_useSystemClockforRotationSensor">false</bool>
+    
+     <!-- Older rotation sensors are not setting event.timestamp correctly. Setting to
+         true will use SystemClock.elapsedRealtimeNanos() to set timestamp. -->
+    <bool name="config_useSystemClockforSensors">true</bool>
 
 </resources>
