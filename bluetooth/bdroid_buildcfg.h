@@ -19,6 +19,5 @@
 #define _BDROID_BUILDCFG_H
 
 #define BTM_DEF_LOCAL_NAME   "GT-N7100"
-#define BLE_INCLUDED TRUE
 
 #endif
