@@ -21,7 +21,7 @@ include device/samsung/smdk4412-common/BoardCommonConfig.mk
 
 # Bionic
 MALLOC_SVELTE := true
-TARGET_NEEDS_TEXT_RELOCATIONS := true
+TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 
 # RIL
 BOARD_PROVIDES_LIBRIL := true
@@ -45,6 +45,7 @@ TARGET_KERNEL_CONFIG := cyanogenmod_n7100_defconfig
 
 # Recovery
 TARGET_RECOVERY_FSTAB := device/samsung/n7100/rootdir/fstab.smdk4x12
+TARGET_USERIMAGES_USE_F2FS := true
 RECOVERY_FSTAB_VERSION := 2
 
 # assert

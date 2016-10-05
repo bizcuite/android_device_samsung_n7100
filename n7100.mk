@@ -81,6 +81,12 @@ PRODUCT_PACKAGES += \
     camera.smdk4x12 \
     Camera2
 
+# f2fs
+PRODUCT_PACKAGES += \
+	fibmap.f2fs \
+	fsck.f2fs \
+	mkfs.f2fs
+
 PRODUCT_COPY_FILES += \
     frameworks/base/nfc-extras/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml
