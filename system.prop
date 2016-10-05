@@ -2,9 +2,13 @@
 # system.prop for n7100
 #
 
+dalvik.vm.dex2oat-Xmx=384m
 dalvik.vm.dexopt-data-only=1
 rild.libpath=/system/lib/ril-wrapper.so
 rild.libargs=-d /dev/ttyS0
-ro.ril.telephony.mqanelements=5
+ro.ril.telephony.mqanelements=4
 ro.sf.lcd_density=320
 ro.lcd_min_brightness=20
+
+# Storage
++ro.sys.sdcardfs=true

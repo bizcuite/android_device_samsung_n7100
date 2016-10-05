@@ -22,10 +22,8 @@ LOCAL_PATH := device/samsung/n7100
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-# This device is xhdpi.  However the platform doesn't
-# currently contain all of the bitmaps at xhdpi density so
-# we do this little trick to fall back to the hdpi version
-# if the xhdpi doesn't exist.
+# Screen density
+PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 # Init files
@@ -44,6 +42,10 @@ PRODUCT_COPY_FILES += \
 # Sensors
 PRODUCT_PACKAGES += \
     sensors.smdk4x12
+
+# Power
+PRODUCT_PACKAGES += \
+    power.smdk4x12
 
 # Gps
 PRODUCT_COPY_FILES += \
@@ -70,13 +72,16 @@ PRODUCT_PACKAGES += \
     Nfc \
     Tag
 
+# Commands to migrate prefs from com.android.nfc3 to com.android.nfc
+#PRODUCT_COPY_FILES += \
+#	packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt
+
 # Camera
 PRODUCT_PACKAGES += \
     camera.smdk4x12 \
     Camera2
 
 PRODUCT_COPY_FILES += \
-    packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt \
     frameworks/base/nfc-extras/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml
 
