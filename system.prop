@@ -11,4 +11,4 @@ ro.sf.lcd_density=320
 ro.lcd_min_brightness=20
 
 # Storage
-+ro.sys.sdcardfs=true
+ro.sys.sdcardfs=true
