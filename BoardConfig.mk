@@ -23,6 +23,9 @@ include device/samsung/smdk4412-common/BoardCommonConfig.mk
 MALLOC_SVELTE := true
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 
+#wifi
+WIFI_DRIVER_MODULE_PATH:=
+
 # RIL
 BOARD_PROVIDES_LIBRIL := true
 BOARD_MODEM_TYPE := xmm6262
