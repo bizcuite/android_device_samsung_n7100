@@ -22,6 +22,9 @@
 # Bionic
 MALLOC_IMPL := dlmalloc
 
+#wifi
+WIFI_DRIVER_MODULE_PATH:=
+
 # RIL
 BOARD_PROVIDES_LIBRIL := true
 BOARD_MODEM_TYPE := xmm6262
