@@ -7,9 +7,9 @@
 /dev/block/platform/dw_mmc/by-name/EFS           /efs              ext4      noatime,nosuid,nodev,journal_async_commit,errors=panic                             wait,check
 #test f2fs
 /dev/block/platform/dw_mmc/by-name/CACHE         /cache            f2fs		noatime,nosuid,nodev		wait
-/dev/block/platform/dw_mmc/by-name/CACHE         /cache            ext4      noatime,nosuid,nodev,journal_async_commit,errors=panic                             wait,check
+#/dev/block/platform/dw_mmc/by-name/CACHE         /cache            ext4      noatime,nosuid,nodev,journal_async_commit,errors=panic                             wait,check
 #test f2fs
-/dev/block/platform/dw_mmc/by-name/USERDATA      /data             f2fs		noatime,nosuid,nodev		wait,check,encryptable=footer
+/dev/block/platform/dw_mmc/by-name/USERDATA      /data             f2fs		noatime,nosuid,nodev		wait
 /dev/block/platform/dw_mmc/by-name/USERDATA      /data             ext4      noatime,nosuid,nodev,noauto_da_alloc,journal_async_commit,errors=panic     wait,check
 /dev/block/platform/dw_mmc/by-name/HIDDEN	 /preload          ext4	noatime,nosuid,nodev,journal_async_commit                 wait
 
