@@ -2,11 +2,20 @@
 # system.prop for n7100
 #
 
-dalvik.vm.dex2oat-Xmx=384m
+persist.service.adb.enable=1                                                    
+persist.service.debuggable=1
+persist.sys.usb.config=mtp,adb
+dalvik.vm.dex2oat-Xmx=256m
 dalvik.vm.dexopt-data-only=1
-ro.ril.mqanelements=5
-rild.libpath=/system/lib/ril-wrapper.so
+rild.libpath=/system/lib/libsecril-shim.so
 rild.libargs=-d /dev/ttyS0
+ro.ril.mqanelements=5
 ro.sf.lcd_density=320
 ro.lcd_min_brightness=20
 
+# Camera & Media hacks
+media.stagefright.legacyencoder=true
+media.stagefright.less-secure=true
+
+# Storage
+#ro.sys.sdcardfs=true

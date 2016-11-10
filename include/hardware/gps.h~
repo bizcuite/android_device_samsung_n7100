@@ -1,15 +1,6 @@
-#define LOG_TAG "RilWrapper"
+#define LOG_TAG "secril-shim"
 #define RIL_SHLIB
-#include <telephony/ril_cdma_sms.h>
-#include <sys/system_properties.h>
-#include <telephony/librilutils.h>
-#include <cutils/sockets.h>
-#include <telephony/ril.h>
-#include <sys/socket.h>
-#include <sys/types.h>
-#include <sys/cdefs.h>
-#include <utils/Log.h>
-#include <sys/stat.h>
+
 #include <pthread.h>
 #include <termios.h>
 #include <alloca.h>
@@ -22,7 +13,20 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdint.h>
+#include <stdlib.h>
+#include <inttypes.h>
 
+#include <telephony/ril_cdma_sms.h>
+#include <sys/system_properties.h>
+#include <telephony/librilutils.h>
+#include <cutils/sockets.h>
+#include <cutils/compiler.h>
+#include <telephony/ril.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <sys/cdefs.h>
+#include <utils/Log.h>
+#include <sys/stat.h>
 #define REAL_RIL_NAME				"/system/lib/libsec-ril.so"
 
 
@@ -31,27 +35,14 @@ static const struct RIL_Env *mEnv;
 
 static void rilOnRequest(int request, void *data, size_t datalen, RIL_Token t)
 {
-	switch (request) {
-		case RIL_REQUEST_REPORT_STK_SERVICE_IS_RUNNING:
-			//we fake this and never even send it to the real RIL
-			RLOGW("Faking reply to RIL_REQUEST_REPORT_STK_SERVICE_IS_RUNNING\n");
-			mEnv->OnRequestComplete(t, RIL_E_SUCCESS, NULL, 0);
-			break;
-		
-		case RIL_REQUEST_SIM_OPEN_CHANNEL:
-			//we fake this and never even send it to the real RIL
-			RLOGW("Faking reply to RIL_REQUEST_SIM_OPEN_CHANNEL\n");
-			mEnv->OnRequestComplete(t, RIL_E_GENERIC_FAILURE, NULL, 0);
-			break;
-		
-		case RIL_REQUEST_GET_RADIO_CAPABILITY:
+    switch (request) {
+        case RIL_REQUEST_GET_RADIO_CAPABILITY:
             RLOGW("Returning NOT_SUPPORTED on GET_RADIO_CAPABILITY");
             mEnv->OnRequestComplete(t, RIL_E_REQUEST_NOT_SUPPORTED, NULL, 0);
             break;
-
-		default:
-			mRealRadioFuncs->onRequest(request, data, datalen, t);
-	}
+        default:
+            mRealRadioFuncs->onRequest(request, data, datalen, t);
+    }
 }
 
 static void patchMem(void *libHandle) {

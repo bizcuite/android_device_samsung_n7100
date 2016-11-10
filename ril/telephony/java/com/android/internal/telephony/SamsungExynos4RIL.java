@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2011 The CyanogenMod Project <http://www.cyanogenmod.org>
- * Copyright (C) 2014 The OmniROM Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,9 +28,6 @@ import android.telephony.ModemActivityInfo;
 import android.telephony.Rlog;
 
 import android.telephony.PhoneNumberUtils;
-
-import com.android.internal.telephony.uicc.IccCardApplicationStatus;
-import com.android.internal.telephony.uicc.IccCardStatus;
 
 public class SamsungExynos4RIL extends RIL implements CommandsInterface {
 
@@ -312,7 +308,6 @@ public class SamsungExynos4RIL extends RIL implements CommandsInterface {
             case RIL_REQUEST_SIM_OPEN_CHANNEL: ret  = responseInts(p); break;
             case RIL_REQUEST_SIM_CLOSE_CHANNEL: ret  = responseVoid(p); break;
             case RIL_REQUEST_SIM_TRANSMIT_APDU_CHANNEL: ret = responseICC_IO(p); break;
-            case RIL_REQUEST_SIM_GET_ATR: ret = responseString(p); break;
             case RIL_REQUEST_NV_READ_ITEM: ret = responseString(p); break;
             case RIL_REQUEST_NV_WRITE_ITEM: ret = responseVoid(p); break;
             case RIL_REQUEST_NV_WRITE_CDMA_PRL: ret = responseVoid(p); break;
@@ -495,7 +490,7 @@ public class SamsungExynos4RIL extends RIL implements CommandsInterface {
                 " Exception: " + tr.toString());
             return;
         }
-/*
+
         switch(response) {
             case RIL_UNSOL_STK_PROACTIVE_COMMAND:
                 if (RILJ_LOGD) unsljLogRet(response, ret);
@@ -518,7 +513,7 @@ public class SamsungExynos4RIL extends RIL implements CommandsInterface {
                             new AsyncResult (null, ret, null));
                 }
             break;
-        }*/
+        }
 
     }
 
@@ -555,40 +550,5 @@ public class SamsungExynos4RIL extends RIL implements CommandsInterface {
 
         send(rr);
     }
-
-    @Override
-    protected Object
-    responseIccCardStatus(Parcel p) {
-        IccCardApplicationStatus appStatus;
-
-        IccCardStatus cardStatus = new IccCardStatus();
-        cardStatus.setCardState(p.readInt());
-        cardStatus.setUniversalPinState(p.readInt());
-        cardStatus.mGsmUmtsSubscriptionAppIndex = p.readInt();
-        cardStatus.mCdmaSubscriptionAppIndex = p.readInt();
-        //cardStatus.mImsSubscriptionAppIndex = p.readInt();
-        cardStatus.mImsSubscriptionAppIndex = -1;
-        int numApplications = p.readInt();
-
-        // limit to maximum allowed applications
-        if (numApplications > IccCardStatus.CARD_MAX_APPS) {
-            numApplications = IccCardStatus.CARD_MAX_APPS;
-        }
-        cardStatus.mApplications = new IccCardApplicationStatus[numApplications];
-        for (int i = 0 ; i < numApplications ; i++) {
-            appStatus = new IccCardApplicationStatus();
-            appStatus.app_type       = appStatus.AppTypeFromRILInt(p.readInt());
-            appStatus.app_state      = appStatus.AppStateFromRILInt(p.readInt());
-            appStatus.perso_substate = appStatus.PersoSubstateFromRILInt(p.readInt());
-            appStatus.aid            = p.readString();
-            appStatus.app_label      = p.readString();
-            appStatus.pin1_replaced  = p.readInt();
-            appStatus.pin1           = appStatus.PinStateFromRILInt(p.readInt());
-            appStatus.pin2           = appStatus.PinStateFromRILInt(p.readInt());
-            cardStatus.mApplications[i] = appStatus;
-        }
-        return cardStatus;
-    }
-
 
 }

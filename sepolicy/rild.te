@@ -1,5 +1,7 @@
 allow rild self:process execmem;
 allow rild system_data_file:dir { write remove_name add_name setattr };
-#allow rild system_data_file:file { write create unlink setattr };
+
 #============= rild ==============
-#allow rild system_data_file:file { create setattr };
+#allow rild device:chr_file { ioctl open read write };
+allow rild system_file:file execmod;
+allow rild toolbox_exec:file { execute execute_no_trans getattr open read };

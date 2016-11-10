@@ -13,18 +13,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-# This variable is set first, so it can be overridden
-# by BoardConfigVendor.mk
-
 include device/samsung/smdk4412-common/BoardCommonConfig.mk
 
 # Bionic
 MALLOC_SVELTE := true
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
+LIBART_IMG_BASE := 0x30000000
 
 #wifi
-WIFI_DRIVER_MODULE_PATH:=
+WIFI_DRIVER_MODULE_PATH :=
 
 # RIL
 BOARD_PROVIDES_LIBRIL := true
@@ -36,9 +33,6 @@ BOARD_RIL_CLASS := ../../../device/samsung/n7100/ril
 # Graphics
 TARGET_REQUIRES_SYNCHRONOUS_SETSURFACE := true
 
-# Sensors
-#BOARD_USES_OPENSOURCE_SENSORS := false
-
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/n7100/bluetooth
 
@@ -48,6 +42,7 @@ TARGET_KERNEL_CONFIG := cyanogenmod_n7100_defconfig
 
 # Recovery
 TARGET_RECOVERY_FSTAB := device/samsung/n7100/rootdir/fstab.smdk4x12
+TARGET_RECOVERY_DENSITY := mdpi
 TARGET_USERIMAGES_USE_F2FS := true
 RECOVERY_FSTAB_VERSION := 2
 
@@ -58,8 +53,5 @@ TARGET_OTA_ASSERT_DEVICE := t03g,n7100,GT-N7100
 #TARGET_POWERHAL_VARIANT := pegasusq
 
 #Selinux
-#BOARD_SEPOLICY_DIRS +=\
-#    device/samsung/n7100/sepolicy
-
-TARGET_RECOVERY_DENSITY := mdpi
-
+BOARD_SEPOLICY_DIRS +=\
+    device/samsung/n7100/sepolicy

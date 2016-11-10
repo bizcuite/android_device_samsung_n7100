@@ -1,2 +1,4 @@
 allow platform_app ump_device:chr_file { read write ioctl open };
 allow platform_app ump_device:chr_file write;
+#============= platform_app ==============
+#allow platform_app device:chr_file { getattr ioctl open read write };

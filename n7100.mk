@@ -49,44 +49,41 @@ PRODUCT_PACKAGES += \
 
 # Gps
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/gps.xml:system/etc/gps.xml
+    $(LOCAL_PATH)/configs/gps.xml:system/etc/gps.xml \
+    $(LOCAL_PATH)/gps_daemon.sh:system/bin/gps_daemon.sh
 
 # Product specific Packages
 PRODUCT_PACKAGES += \
-	libdmitry \
+    DeviceSettings \
+    SamsungServiceMode \
     libsecril-client \
     libsecril-client-sap \
-    SamsungServiceMode \
     tinyplay
 
-# RIL
+# RIL & GPS fix
 PRODUCT_PACKAGES += \
-	libsamsung_symbols \
-	ril-wrapper
+    libsecril-shim \
+    libdmitry
 
 # NFC
 PRODUCT_PACKAGES += \
-	nfc.exynos4 \
+    nfc.exynos4 \
     libnfc \
     libnfc_jni \
     Nfc \
     Tag
 
-# Commands to migrate prefs from com.android.nfc3 to com.android.nfc
-#PRODUCT_COPY_FILES += \
-#	packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt
-
 # Camera
 PRODUCT_PACKAGES += \
     camera.smdk4x12 \
     Camera2
-
+	
 # f2fs
 PRODUCT_PACKAGES += \
 	fibmap.f2fs \
 	fsck.f2fs \
-	mkfs.f2fs
-
+	mkfs.f2fs	
+	
 PRODUCT_COPY_FILES += \
     frameworks/base/nfc-extras/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml
@@ -102,9 +99,14 @@ PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
 
 PRODUCT_PACKAGES += \
-    com.android.nfc_extras
+    com.android.nfc_extras \
+    Stk
 
 $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
+
+# Samsung symbols
+PRODUCT_PACKAGES += \
+    libsamsung_symbols
 
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -112,6 +114,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     mobiledata.interfaces=pdp0,gprs,ppp0,rmnet0,rmnet1 \
     ro.telephony.call_ring.multiple=false \
     ro.telephony.call_ring.delay=3000
+
+
+# set default USB configuration
+ PRODUCT_DEFAULT_PROPERTY_OVERRIDES := \
+ ro.secure=0 \
+ ro.adb.secure=0
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \

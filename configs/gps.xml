@@ -6,7 +6,7 @@
        lBaudRate="921600"
        gpioNStdbyPath="/sys/class/sec/gps/GPS_PWR_EN/value"
        gpioDelayMs="250"
-       acNvStoDir="/data/system/gps/"
+       acNvStoDir="/data/gps/"
        FactoryTestFilePath="/data/"
 
        Log="JAVA"
@@ -16,7 +16,6 @@
        LPmode="false"
        cp-cold-start="false"
        cp-guard-time-sec="1"
-
        arp-supl-enable="true"
        arp-supl-cap-msb="true"
        arp-supl-cap-msa="true"
@@ -39,7 +38,7 @@
        LbsSyncLto="false"
        SyncLto="true"
        ltoFileName="lto2.dat"
-       acLtoDir="/data/system/gps/"
+       acLtoDir="/data/gps/"
        LbsSyncLtoThresholdDays="1"
        LbsTAC="10101106"
        LbsCellEnable="false" 
@@ -70,4 +69,3 @@
   />
 
 </glgps>
-

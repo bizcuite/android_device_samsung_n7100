@@ -1,0 +1,9 @@
+#============= cameraserver ==============
+allow cameraserver fuse:dir search;
+allow cameraserver kernel:system module_request;
+allow cameraserver mnt_user_file:dir search;
+allow cameraserver mnt_user_file:lnk_file read;
+allow cameraserver storage_file:dir search;
+allow cameraserver storage_file:lnk_file read;
+allow cameraserver system_data_file:file { open read };
+allow cameraserver tmpfs:dir search;
