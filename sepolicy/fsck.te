@@ -1,6 +1,0 @@
-#============= fsck ==============
-#allow fsck block_device:blk_file { read write ioctl open };
-allow fsck efs_block_device:blk_file { read write getattr open ioctl };
-allow fsck kernel:system module_request;
-#============= fsck ==============
-#allow fsck block_device:blk_file { ioctl open read write };

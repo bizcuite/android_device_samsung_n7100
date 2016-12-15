@@ -1,5 +1,5 @@
-allow servicemanager gpsd:dir search;
-allow servicemanager gpsd:file { read open };
+allow servicemanager gpsd:dir { search read write };
+allow servicemanager gpsd:file { open read write };
 allow servicemanager gpsd:process getattr;
 #============= servicemanager ==============
 allow servicemanager kernel:system module_request;

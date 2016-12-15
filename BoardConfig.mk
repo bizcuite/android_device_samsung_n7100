@@ -18,7 +18,6 @@ include device/samsung/smdk4412-common/BoardCommonConfig.mk
 # Bionic
 MALLOC_SVELTE := true
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
-LIBART_IMG_BASE := 0x30000000
 
 #wifi
 WIFI_DRIVER_MODULE_PATH :=
@@ -39,6 +38,10 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/n7100/bluetooth
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
 TARGET_KERNEL_CONFIG := cyanogenmod_n7100_defconfig
+
+# Camera Hacks
+BOARD_GLOBAL_CFLAGS += -DMETADATA_CAMERA_SOURCE
+TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB := device/samsung/n7100/rootdir/fstab.smdk4x12

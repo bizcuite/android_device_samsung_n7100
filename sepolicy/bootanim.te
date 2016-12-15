@@ -1,5 +1,0 @@
-allow bootanim ump_device:chr_file { open read write ioctl };
-
-#============= bootanim ==============
-#allow bootanim device:chr_file { getattr ioctl open read write };
-allow bootanim kernel:system module_request;

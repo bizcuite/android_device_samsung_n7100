@@ -1,3 +1,5 @@
 allow vold efs_file:dir { read getattr open ioctl };
 #============= vold ==============
 allow vold kernel:system module_request;
+allow vold efs_device_file:dir rw_file_perms;
+allow vold efs_device_file:file rw_file_perms;
